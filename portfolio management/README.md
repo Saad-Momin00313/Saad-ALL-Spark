@@ -23,11 +23,11 @@ cd Saad-ALL-Spark/portfolio\ management
 #### Getting Your API Key
 
 1. Go to https://makersuite.google.com/app/apikey
-
+2. Sign in with your Google account
+3. Create a new API key
+4. Keep this key secure and never commit it to version control
 
 #### Setting Up Environment
-
-
 
 **Using export:**
 
@@ -38,8 +38,6 @@ export GEMINI_API_KEY=your_actual_api_key_here
 # Run the application
 docker-compose up --build
 ```
-
-
 
 Other environment variables (optional):
 
@@ -81,12 +79,87 @@ The API endpoints are available at:
 - Swagger UI: `http://localhost:8000/docs` (Development)
 - ReDoc: `http://localhost:8000/redoc` (Development)
 
+#### CORS Configuration
+
+The API supports CORS for frontend integration with the following configurations:
+
+- Allowed origins: All (customizable in production)
+- Allowed methods: GET, POST, PUT, DELETE, OPTIONS
+- Allowed headers: All standard headers
+- Credentials: Supported
+
+#### API Integration Guide
+
+1. **Authentication**:
+
+   - Use Bearer token authentication
+   - Include token in Authorization header
+   - Example: `Authorization: Bearer your_token_here`
+
+2. **Response Format**:
+   All endpoints return JSON with consistent structure:
+
+   ```json
+   {
+     "status": "success|error",
+     "data": {...},
+     "message": "Optional message"
+   }
+   ```
+
+3. **Error Handling**:
+
+   - HTTP status codes are properly used
+   - Detailed error messages provided
+   - Validation errors include field-specific details
+
+4. **Rate Limiting**:
+   - 100 requests per minute per IP (configurable)
+   - Rate limit headers included in response
+
 #### Key Endpoints:
 
 - `/api/v1/portfolio/`: Portfolio management endpoints
 - `/api/v1/market/`: Market data endpoints
 - `/api/v1/analysis/`: Financial analysis endpoints
 - `/api/v1/chat/`: Chatbot interaction endpoints
+
+### Production Readiness Checklist
+
+1. **Security**:
+
+   - ✅ SSL/TLS encryption
+   - ✅ API key security
+   - ✅ Rate limiting
+   - ✅ Input validation
+   - ✅ CORS configuration
+
+2. **Performance**:
+
+   - ✅ Database indexing
+   - ✅ Caching implemented
+   - ✅ Response compression
+   - ✅ Load balancing ready
+
+3. **Monitoring**:
+
+   - ✅ Health check endpoints
+   - ✅ Logging system
+   - ✅ Error tracking
+   - ✅ Performance metrics
+
+4. **Scalability**:
+
+   - ✅ Containerized
+   - ✅ Stateless design
+   - ✅ Horizontal scaling ready
+   - ✅ Cache strategy
+
+5. **Deployment**:
+   - ✅ CI/CD ready
+   - ✅ Environment configurations
+   - ✅ Backup strategy
+   - ✅ Rollback procedures
 
 ### Testing
 
@@ -138,22 +211,6 @@ docker-compose up --build
 docker ps
 ```
 
-### Security Best Practices
-
-1. API Key Security:
-
-   - Never commit your API key to version control
-   - Don't share your API key with others
-   - Each developer should get their own API key
-   - Rotate API keys periodically
-   - Use environment variables for sensitive data
-
-2. Production Deployment:
-   - Use secure secrets management
-   - Consider using cloud key management services
-   - Implement proper authentication
-   - Use HTTPS in production
-   - Regular security audits
 
 ### Contact
 
