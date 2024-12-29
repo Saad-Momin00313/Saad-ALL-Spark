@@ -62,4 +62,19 @@ build/
 
 # Local development
 *.local
-endpoint_test_results.txt 
+endpoint_test_results.txt
+
+# Test files
+test_*.py
+*_test.py
+tests/
+test/
+testing/
+test_ai_endpoints.sh
+test_all_endpoints.sh
+test_chat_endpoints.sh
+test_endpoints.sh
+test_market_endpoints.sh
+test_portfolio_endpoints.sh
+test_specific_endpoints.sh
+test_technical_endpoints.sh 
