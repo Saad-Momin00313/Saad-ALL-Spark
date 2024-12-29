@@ -20,21 +20,36 @@ cd Saad-ALL-Spark/portfolio\ management
 
 2. Environment Setup:
 
-- Create a `.env` file in the root directory with the following variables:
+#### Getting Your API Key
+
+1. Go to https://makersuite.google.com/app/apikey
+
+
+#### Setting Up Environment
+
+
+
+**Using export:**
+
+```bash
+# Set the API key as an environment variable
+export GEMINI_API_KEY=your_actual_api_key_here
+
+# Run the application
+docker-compose up --build
+```
+
+
+
+Other environment variables (optional):
 
 ```env
-# Required
-GEMINI_API_KEY=your_actual_api_key_here  # Get this from Google's Makersuite
+# Optional - Default values shown
 ENVIRONMENT=development
 LOG_LEVEL=INFO
-
-# Optional - Default values shown
-DATABASE_URL=postgresql://user:password@db:5432/portfolio
 MARKET_DATA_CACHE_DURATION=3600
 DEFAULT_MARKET_INDEX=^GSPC
 ```
-
-**IMPORTANT**: Never commit your `.env` file or share your API keys. The `.env` file is already in `.gitignore` to prevent accidental commits.
 
 3. Running the Application:
 
@@ -123,14 +138,23 @@ docker-compose up --build
 docker ps
 ```
 
+### Security Best Practices
+
+1. API Key Security:
+
+   - Never commit your API key to version control
+   - Don't share your API key with others
+   - Each developer should get their own API key
+   - Rotate API keys periodically
+   - Use environment variables for sensitive data
+
+2. Production Deployment:
+   - Use secure secrets management
+   - Consider using cloud key management services
+   - Implement proper authentication
+   - Use HTTPS in production
+   - Regular security audits
+
 ### Contact
 
 For any issues or questions, please contact the development team.
-
-## Security Note
-
-- Never commit the `.env` file
-- Keep API keys and sensitive credentials secure
-- Use proper authentication when accessing the API endpoints
-- For production deployment, use environment variables or a secure secrets management system
-- Rotate API keys periodically and after any suspected exposure
