@@ -7,6 +7,7 @@
 - Docker
 - Docker Compose
 - Git
+- Gemini API Key (Get it from https://makersuite.google.com/app/apikey)
 
 ### Setup Instructions
 
@@ -22,11 +23,18 @@ cd Saad-ALL-Spark/portfolio\ management
 - Create a `.env` file in the root directory with the following variables:
 
 ```env
-# Add your environment variables here
-# Example:
+# Required
+GEMINI_API_KEY=your_actual_api_key_here  # Get this from Google's Makersuite
+ENVIRONMENT=development
+LOG_LEVEL=INFO
+
+# Optional - Default values shown
 DATABASE_URL=postgresql://user:password@db:5432/portfolio
-API_KEY=your_api_key
+MARKET_DATA_CACHE_DURATION=3600
+DEFAULT_MARKET_INDEX=^GSPC
 ```
+
+**IMPORTANT**: Never commit your `.env` file or share your API keys. The `.env` file is already in `.gitignore` to prevent accidental commits.
 
 3. Running the Application:
 
@@ -65,7 +73,12 @@ The API endpoints are available at:
 - `/api/v1/analysis/`: Financial analysis endpoints
 - `/api/v1/chat/`: Chatbot interaction endpoints
 
+### Testing
 
+While test files are not included in the repository, you can run tests locally:
+
+1. Set up a local development environment
+2. Run the test suite using the provided shell scripts
 
 ### Troubleshooting
 
@@ -119,3 +132,5 @@ For any issues or questions, please contact the development team.
 - Never commit the `.env` file
 - Keep API keys and sensitive credentials secure
 - Use proper authentication when accessing the API endpoints
+- For production deployment, use environment variables or a secure secrets management system
+- Rotate API keys periodically and after any suspected exposure
