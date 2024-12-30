@@ -1,9 +1,14 @@
+# Git
+.git
+.gitignore
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -15,40 +20,35 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
 # Virtual Environment
 venv/
-env/
 ENV/
-.env
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+
+# Local development
+.env
+*.log
 .DS_Store
 
-# Project specific
-*.csv
-*.log
-.coverage
-htmlcov/
-.pytest_cache/
-.streamlit/
-data_store/
-uploads/
+# Test files
+test_*.py
+tests/
+pytest_cache/
 
-# API Keys and Secrets
-.env
-*.pem
-*.key
+# Documentation
+docs/
+*.md
 
-# Temporary files
-*.bak
-*.tmp
-*~
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore 
